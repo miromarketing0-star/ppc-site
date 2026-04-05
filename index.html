@@ -1,8 +1,8 @@
-# Бесплатный PPC-сайт для GitHub Pages + Google Tag Manager
 
-Скопируй этот код в файл `index.html`.
 
-```html
+
+
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -152,31 +152,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </body>
 </html>
-```
 
-Дальше:
-
-1. Замени `GTM-XXXXXXX` на свой ID из Google Tag Manager.
-2. Создай репозиторий на GitHub.
-3. Загрузи туда файл `index.html`.
-4. Зайди: `Settings → Pages`.
-5. Включи `Deploy from branch` и выбери `main`.
-6. Через 1–2 минуты сайт будет доступен по ссылке вида:
-   `https://твой-логин.github.io/имя-репозитория/`
-
-События уже готовы:
-
-* `open_form` — открытие формы
-* `lead_submit` — отправка заявки
-
-В Google Tag Manager ты сможешь использовать их как триггеры для:
-
-* Google Analytics 4
-* Google Ads Conversion
-* ремаркетинга
-
-Пример настройки в GTM:
-
-* Trigger → Custom Event → `lead_submit`
-* Tag → Google Ads Conversion
-* Trigger → `lead_submit`
