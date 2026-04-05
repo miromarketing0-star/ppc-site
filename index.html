@@ -1,0 +1,182 @@
+# Бесплатный PPC-сайт для GitHub Pages + Google Tag Manager
+
+Скопируй этот код в файл `index.html`.
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ремонт техники в Харькове</title>
+
+    <!-- Google Tag Manager -->
+    <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .hero {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 18px 36px;
+            border-radius: 12px;
+            font-size: 20px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        .form {
+            margin-top: 40px;
+            display: none;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 18px;
+            box-sizing: border-box;
+        }
+
+        .success {
+            display: none;
+            margin-top: 20px;
+            color: green;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="container">
+    <div class="hero">
+        <h1>Ремонт техники за 1 день</h1>
+        <p>Оставьте заявку и получите бесплатную консультацию в течение 15 минут.</p>
+
+        <button class="btn" id="openForm">Оставить заявку</button>
+
+        <div class="form" id="leadForm">
+            <input type="text" id="name" placeholder="Ваше имя">
+            <input type="tel" id="phone" placeholder="Ваш телефон">
+            <button class="btn" id="sendBtn">Отправить</button>
+        </div>
+
+        <div class="success" id="successMessage">
+            Спасибо! Заявка отправлена.
+        </div>
+    </div>
+</div>
+
+<script>
+    const openForm = document.getElementById('openForm');
+    const leadForm = document.getElementById('leadForm');
+    const sendBtn = document.getElementById('sendBtn');
+    const successMessage = document.getElementById('successMessage');
+
+    openForm.addEventListener('click', function() {
+        leadForm.style.display = 'block';
+
+        dataLayer.push({
+            event: 'open_form'
+        });
+    });
+
+    sendBtn.addEventListener('click', function() {
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+
+        if(name !== '' && phone !== '') {
+            leadForm.style.display = 'none';
+            successMessage.style.display = 'block';
+
+            dataLayer.push({
+                event: 'lead_submit'
+            });
+        } else {
+            alert('Заполните все поля');
+        }
+    });
+</script>
+
+</body>
+</html>
+```
+
+Дальше:
+
+1. Замени `GTM-XXXXXXX` на свой ID из Google Tag Manager.
+2. Создай репозиторий на GitHub.
+3. Загрузи туда файл `index.html`.
+4. Зайди: `Settings → Pages`.
+5. Включи `Deploy from branch` и выбери `main`.
+6. Через 1–2 минуты сайт будет доступен по ссылке вида:
+   `https://твой-логин.github.io/имя-репозитория/`
+
+События уже готовы:
+
+* `open_form` — открытие формы
+* `lead_submit` — отправка заявки
+
+В Google Tag Manager ты сможешь использовать их как триггеры для:
+
+* Google Analytics 4
+* Google Ads Conversion
+* ремаркетинга
+
+Пример настройки в GTM:
+
+* Trigger → Custom Event → `lead_submit`
+* Tag → Google Ads Conversion
+* Trigger → `lead_submit`
